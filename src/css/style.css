@@ -1,3 +1,11 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+.div2 button{
+    margin: 10px;
+}
+
+.div2 p{
+    align-items: center;
+}

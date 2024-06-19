@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="en">
+<html class="" lang="en">
 
 <head>
   <meta charset="UTF-8" />
@@ -7,11 +7,92 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <link rel="stylesheet" href="/src/css/style.css">
   <title>cookie clicker</title>
-  <h1>Hello</h1>
 </head>
 
-<body>
-  <div id="app"></div>
+<body class="">
+  <header>
+    <div id="points" class="w-full border text flex justify-center">
+      points :
+    </div>
+  </header>
+  <div class="grid grid-cols-12 div1">
+
+    <div class="col-span-6 flex justify-center">
+      <button id="coockie">
+        <img class="w-10"
+          src="https://img.freepik.com/photos-gratuite/biscuits-aux-pepites-chocolat-isoles-fond-blanc-ai-generatif_123827-24066.jpg?size=626&ext=jpg&ga=GA1.1.2116175301.1717459200&semt=sph"
+          alt="">
+      </button>
+    </div>
+
+    <div class="col-span-6 grid grid-cols-12 pt-10 div2">
+
+      <div class="col-span-6 flex justify-center">
+        <button class="border w-20 h-10" id="bonus">
+          Bonus
+        </button>
+      </div>
+      <div class="col-span-6 flex justify-center">
+        <button class="border w-20 h-10" id="credit">
+          credit
+        </button>
+      </div>
+
+      <div class="col-span-6 flex justify-center">
+        <button class="border w-20 h-10" id="auto_click">
+          auto-click
+        </button>
+      </div>
+      <div class="col-span-6 flex justify-center">
+        <button class="border w-20 h-10" id="multi">
+          multiplier
+        </button>
+      </div>
+
+      <div class="col-span-6 flex justify-center">
+        <p class="border" id="l_multi">
+        list multiplier
+        </p>
+
+      </div>
+
+      <div class="col-span-6 grid grid-cols-2">
+        <div class="col-span-1 flex justify-center">
+          <button class="border w-20 h-10" id="2x">
+            2*
+          </button>
+        </div>
+
+        <div class="col-span-1 flex justify-center" id="3x">
+          <button class="border w-20 h-10">
+            5*
+          </button>
+        </div>
+
+        <div class="col-span-1 flex justify-center">
+          <button class="border w-20 h-10" id="10x">
+            10*
+          </button>
+        </div>
+
+        <div class="col-span-1 flex justify-center">
+          <button class="border w-20 h-10" id="100x">
+            100*
+          </button>
+        </div>
+
+      </div>
+
+    </div>
+
+  </div>
+
+  <footer class="flex justify-center mt-10 border">
+      <p>
+        crédit : Patrick J, Anthony D, Alisabah S
+      </p>
+  </footer>
+
   <script type="module" src="/src/js/script.js"></script>
 </body>
 
