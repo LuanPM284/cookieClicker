@@ -1,3 +1,30 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+.div2 button{
+    margin: 10px;
+    border-radius: 10px;
+}
+
+.div2 button:hover{
+    
+}
+
+.div2 p{
+    align-items: center;
+}
+
+.div2{
+    align-items: center;
+}
+
+.div2 div{
+    border-radius: 10px;
+}
+
+html{
+    background: rgb(2,0,36);
+    background: linear-gradient(90deg, rgba(2,0,36,1) 0%, rgba(179,98,22,1) 0%, rgba(255,179,0,1) 87%);
+}
+
