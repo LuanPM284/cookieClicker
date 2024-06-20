@@ -1,65 +1,23 @@
-// Step 1 - base structure
-// variables
-var counter = 0;
-var coockieBtn = document.getElementById("coockie");
-var credit = document.getElementById("credit");
-var points = document.getElementById("points");
+var x2 = document.getElementById('2x')
+var x5 = document.getElementById('5x')
+var x10 = document.getElementById('10x')
+var x100 = document.getElementById('100x')
 
-points.innerHTML = `Points: ${counter}`;
-credit.innerHTML = `Credits: ${counter}`;
+function rainbow(but_id) {
+  /*
+  but_id takes document.getelementbyid('id') as argument
+   */
+  but_id.addEventListener('click', function () {
+    const button = this;
+    button.classList.add('rainbow');
 
-coockieBtn.addEventListener("click", () => {
-    points.innerHTML = `Points: ${counter}`;
-    credit.innerHTML = `Credits: ${counter}`;
-    counter += 1;
-})
-var bonus = document.getElementById("bonus");
-bonus.addEventListener("click", () => {
-    console.log(counter);
-})
+    setTimeout(function () {
+      button.classList.remove('rainbow');
+    }, 10000);
+  });
+}
 
-// ===============================================================================
-// Step 2 -
-//      Done at Step 1
-// ===============================================================================
-// Step 3 -
-//      Done at Step 1
-// ===============================================================================
-// Step 4 -
-
-// ===============================================================================
-// Step 5 -
-
-// ===============================================================================
-// Step 6 -
-
-// ===============================================================================
-// Step 7 - Multiplier table
-
-// const multiplierTableCounter = {
-//     "2x": 0,
-//     "5x": 0,
-//     "10x": 0,
-//     "100x": 0,
-// };
-// console.log(multiplierTableCounter["2x"]); // output: 0
-// multiplierTableCounter["2"] = 10;
-// console.log(multiplierTableCounter["2x"]) // output: 10
-// ===============================================================================
-// Step 8 -
-
-// ===============================================================================
-// Step 9 -
-
-// ===============================================================================
-// Step 10 -
-
-// ===============================================================================
-// Step 11 -
-
-// ===============================================================================
-// Step 12 -
-
-// ===============================================================================
-// This allows us to keep count of the times a certain multiplier was purchased
-
+rainbow(x2);
+rainbow(x5);
+rainbow(x10);
+rainbow(x100);
