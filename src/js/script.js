@@ -1,12 +1,29 @@
 // Step 1 - base structure
 // variables
+var counter = 0;
+var coockieBtn = document.getElementById("coockie");
+var credit = document.getElementById("credit");
+var points = document.getElementById("points");
+
+points.innerHTML = `Points: ${counter}`;
+credit.innerHTML = `Credits: ${counter}`;
+
+coockieBtn.addEventListener("click", () => {
+    points.innerHTML = `Points: ${counter}`;
+    credit.innerHTML = `Credits: ${counter}`;
+    counter += 1;
+})
+var bonus = document.getElementById("bonus");
+bonus.addEventListener("click", () => {
+    console.log(counter);
+})
 
 // ===============================================================================
 // Step 2 -
-
+//      Done at Step 1
 // ===============================================================================
 // Step 3 -
-
+//      Done at Step 1
 // ===============================================================================
 // Step 4 -
 
