@@ -80,11 +80,13 @@ let credit = 0;
 var clickValue = 1;
 let multiplerList = [];
 
+//the value of multipliers
 let multiplier2x = 2;
 let multiplier5x = 5;
 let multiplier10x = 10;
 let multiplier100x = 100;
 
+// the cost of multipliers
 let times2xpointPrice = 10;
 let times5xpointPrice = 20;
 let times10xpointPrice = 30;
@@ -103,12 +105,14 @@ function increaseCookies() {
   buttonActiver();
 }
 
+// it will assign the values to the html
 function displayCookie() {
   pointsTag.innerText = `Points: ${points}`;
   creditTag.innerText = `Credit: ${credit}`;
   //   console.log(score);
 }
 
+// turn buttoms on off
 function multiplierTaggle() {
   if (credit >= times2xpointPrice) {
     times2xpoint.disabled = false;
@@ -134,6 +138,7 @@ function multiplierTaggle() {
     times100xpoint.disabled = true;
   }
 }
+
 multiBox.innerHTML = "List Multiplier";
 function displayMultiplier() {
   if (multiplerList.length > 0) {
