@@ -8,11 +8,16 @@ var points = document.getElementById("points");
 points.innerHTML = `Points: ${counter}`;
 credit.innerHTML = `Credits: ${counter}`;
 
-document.addEventListener("click", () => {
+coockieBtn.addEventListener("click", () => {
     points.innerHTML = `Points: ${counter}`;
     credit.innerHTML = `Credits: ${counter}`;
-    counter++;
+    counter += 1;
 })
+var bonus = document.getElementById("bonus");
+bonus.addEventListener("click", () => {
+    console.log(counter);
+})
+
 // ===============================================================================
 // Step 2 -
 //      Done at Step 1
