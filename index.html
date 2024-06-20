@@ -3,19 +3,25 @@
 
 <head>
   <meta charset="UTF-8" />
-  <link rel="icon" type="image/svg+xml" href="/vite.svg" />
+  <link rel="icon" type="image/svg+xml" href="/src/media/cookie-solid.svg" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <link rel="stylesheet" href="/src/css/style.css" />
   <title>cookie clicker</title>
 </head>
 
 <body class="mx-20 my-5">
-  
+
   <header class="">
-    <div id="points" class="w-full border-8 border-b-4 text flex justify-center border-orange-900">
-      points :
-    </div>
+
+    <h1 class="pb-5 mb-4 text-3xl font-extrabold text-gray-900 dark:text-white md:text-5xl lg:text-6xl flex justify-center">
+      <span class="text-transparent bg-clip-text bg-gradient-to-r to-yellow-700 from-orange-900 ">Cookie Clicker</span> 
+    </h1>
+
   </header>
+
+  <div id="points" class="w-full border-8 border-b-4 text flex justify-center border-orange-900">
+    points :
+  </div>
 
   <div class="grid grid-cols-12 div1 border-x-8 border-y-4 border-orange-900">
 
@@ -27,56 +33,67 @@
 
     <div class="col-span-6 grid grid-cols-12 div2 border-l-4 pt-3 border-orange-900">
 
-      <div class="text-xl font-extrabold col-span-6 flex justify-center  border-4 m-5 border-yellow-600 h-full rounded-lg" id="multi">
+      <div
+        class="text-xl font-extrabold col-span-6 flex justify-center  border-4 m-5 border-yellow-600 h-full rounded-lg"
+        id="multi">
         multiplier history :
       </div>
 
-      <div class="text-xl font-extrabold col-span-6 flex justify-center border-4 m-5 border-yellow-600 h-full rounded-lg" id="credit">
+      <div
+        class="text-xl font-extrabold col-span-6 flex justify-center border-4 m-5 border-yellow-600 h-full rounded-lg"
+        id="credit">
         credits :
       </div>
 
       <div class="col-span-6 flex justify-center">
-        <button type="button" class="w-30 h-10 text-white bg-gradient-to-br from-orange-900 to-orange-400 hover:bg-gradient-to-bl focus:ring-4 focus:outline-none focus:ring-pink-200 dark:focus:ring-pink-800 font-medium rounded-lg text-sm px-5 py-2.5 text-center me-2 mb-2">
+        <button type="button"
+          class="w-30 h-10 text-white bg-gradient-to-br from-orange-900 to-orange-400 hover:bg-gradient-to-bl focus:ring-4 focus:outline-none focus:ring-pink-200 dark:focus:ring-pink-800 font-medium rounded-lg text-sm px-5 py-2.5 text-center me-2 mb-2">
           auto-click
         </button>
       </div>
-      
+
       <div class="col-span-6 flex justify-center">
-        <button type="button" class="w-30 h-10 text-white bg-gradient-to-br from-orange-900 to-orange-400 hover:bg-gradient-to-bl focus:ring-4 focus:outline-none focus:ring-pink-200 dark:focus:ring-pink-800 font-medium rounded-lg text-sm px-5 py-2.5 text-center me-2 mb-2">
+        <button type="button"
+          class="w-30 h-10 text-white bg-gradient-to-br from-orange-900 to-orange-400 hover:bg-gradient-to-bl focus:ring-4 focus:outline-none focus:ring-pink-200 dark:focus:ring-pink-800 font-medium rounded-lg text-sm px-5 py-2.5 text-center me-2 mb-2">
           Bonus
         </button>
       </div>
 
-      
-      
+
+
 
 
       <div class="col-span-12 grid grid-cols-2 border-4 m-10 border-yellow-600 h-full">
 
-        <div class="col-span-2 flex justify-center text-3xl font-extrabold border-4 border-collapse border-yellow-600" id="multi">
-            multiplier
+        <div class="col-span-2 flex justify-center text-3xl font-extrabold border-4 border-collapse border-yellow-600"
+          id="multi">
+          multiplier
         </div>
 
         <div class="col-span-1 flex justify-center border-4 border-collapse border-yellow-600">
-          <button type="button" id="2x" class="w-30 h-10 text-white bg-gradient-to-br from-orange-900 to-orange-400 hover:bg-gradient-to-bl focus:ring-4 focus:outline-none focus:ring-pink-200 dark:focus:ring-pink-800 font-medium rounded-lg text-sm px-5 py-2.5 text-center me-2 mb-2">
+          <button type="button" id="2x"
+            class="w-30 h-10 text-white bg-gradient-to-br from-orange-900 to-orange-400 hover:bg-gradient-to-bl focus:ring-4 focus:outline-none focus:ring-pink-200 dark:focus:ring-pink-800 font-medium rounded-lg text-sm px-5 py-2.5 text-center me-2 mb-2">
             2*
           </button>
         </div>
 
         <div class="col-span-1 flex justify-center border-4 border-collapse border-yellow-600">
-          <button type="button" id="5x" class="w-30 h-10 text-white bg-gradient-to-br from-orange-900 to-orange-400 hover:bg-gradient-to-bl focus:ring-4 focus:outline-none focus:ring-pink-200 dark:focus:ring-pink-800 font-medium rounded-lg text-sm px-5 py-2.5 text-center me-2 mb-2">
+          <button type="button" id="5x"
+            class="w-30 h-10 text-white bg-gradient-to-br from-orange-900 to-orange-400 hover:bg-gradient-to-bl focus:ring-4 focus:outline-none focus:ring-pink-200 dark:focus:ring-pink-800 font-medium rounded-lg text-sm px-5 py-2.5 text-center me-2 mb-2">
             5*
           </button>
         </div>
 
         <div class="col-span-1 flex justify-center border-4 border-collapse border-yellow-600">
-          <button type="button"  id="10x" class="w-30 h-10 text-white bg-gradient-to-br from-orange-900 to-orange-400 hover:bg-gradient-to-bl focus:ring-4 focus:outline-none focus:ring-pink-200 dark:focus:ring-pink-800 font-medium rounded-lg text-sm px-5 py-2.5 text-center me-2 mb-2">
+          <button type="button" id="10x"
+            class="w-30 h-10 text-white bg-gradient-to-br from-orange-900 to-orange-400 hover:bg-gradient-to-bl focus:ring-4 focus:outline-none focus:ring-pink-200 dark:focus:ring-pink-800 font-medium rounded-lg text-sm px-5 py-2.5 text-center me-2 mb-2">
             10*
           </button>
         </div>
 
         <div class="col-span-1 flex justify-center border-4 border-collapse border-yellow-600">
-          <button type="button" id="100x" class="w-30 h-10 text-white bg-gradient-to-br from-orange-900 to-orange-400 hover:bg-gradient-to-bl focus:ring-4 focus:outline-none focus:ring-pink-200 dark:focus:ring-pink-800 font-medium rounded-lg text-sm px-5 py-2.5 text-center me-2 mb-2">
+          <button type="button" id="100x"
+            class="w-30 h-10 text-white bg-gradient-to-br from-orange-900 to-orange-400 hover:bg-gradient-to-bl focus:ring-4 focus:outline-none focus:ring-pink-200 dark:focus:ring-pink-800 font-medium rounded-lg text-sm px-5 py-2.5 text-center me-2 mb-2">
             100*
           </button>
         </div>
