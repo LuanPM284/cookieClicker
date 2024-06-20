@@ -23,3 +23,13 @@ html{
     background: linear-gradient(90deg, rgba(2,0,36,1) 0%, rgba(179,98,22,1) 0%, rgba(255,179,0,1) 87%);
 }
 
+.rainbow {
+    background: linear-gradient(90deg, red, orange, yellow, green, blue, indigo, violet);
+    background-size: 400% 400%;
+    animation: rainbowAnimation 10s linear;
+}
+
+@keyframes rainbowAnimation {
+    0% { background-position: 0% 50%; }
+    100% { background-position: 100% 50%; }
+}
