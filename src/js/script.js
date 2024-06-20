@@ -178,3 +178,22 @@ times100xpoint.disabled = true;
 coockieBtn.addEventListener("click", increaseCookies);
 
 times2xpoint.addEventListener("click", times2xpointfunction);
+
+function rainbow(but_id) {
+  /*
+  but_id takes document.getelementbyid('id') as argument
+   */
+  but_id.addEventListener('click', function () {
+    const button = this;
+    button.classList.add('rainbow');
+
+    setTimeout(function () {
+      button.classList.remove('rainbow');
+    }, 10000);
+  });
+}
+
+rainbow(times2xpoint);
+rainbow(times5xpoint);
+rainbow(times10xpoint);
+rainbow(times100xpoint);
