@@ -67,8 +67,10 @@ let pointsTag = document.getElementById("points");
 let coockieBtn = document.getElementById("coockie");
 let creditTag = document.getElementById("credit");
 let multiBox = document.getElementById("multi-list");
+
 let autoclic = document.getElementById("auto");
-let autozone = document.getElementById('autozone')
+let autozone = document.getElementById('autozone');
+let autop = document.getElementById('autoP');
 
 let times2xpoint = document.getElementById("2x");
 let times5xpoint = document.getElementById("5x");
@@ -83,7 +85,7 @@ let times100xzoneprice = document.getElementById("price100x");
 let auto_value = 0;
 let autoPrice =  100;
 var points = 0;
-let credit = 5000;
+let credit = 0;
 var clickValue = 1;
 let multi = 1;
 let clic =0;
@@ -156,11 +158,13 @@ function buyAutoClicker() {
   if (credit >= autoPrice) {
     auto_value +=  0.1; //add 1 clic every 10 sec
     credit -= autoPrice;
-    auto.disabled = true;
+    autoPrice += 10;
+    autoclic.disabled = true;
     autoclicInterval = setInterval(increaseCookies, 10000);
     displayCookie();
     buttonActiver();
-    autozone.innerHTML = "clic/sec : " + auto_value;
+    autozone.innerHTML = "clic/sec : " + auto_value.toFixed(1);
+    autop.innerHTML = autoPrice + "C"
   }
 }
 
