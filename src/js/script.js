@@ -1,68 +1,3 @@
-// Step 1 - base structure
-// variables
-// var counter = 0;
-// var coockieBtn = document.getElementById("coockie");
-// var credit = document.getElementById("credit");
-// var points = document.getElementById("points");
-
-// points.innerHTML = `Points: ${counter}`;
-// credit.innerHTML = `Credits: ${counter}`;
-
-// coockieBtn.addEventListener("click", () => {
-//     points.innerHTML = `Points: ${counter}`;
-//     credit.innerHTML = `Credits: ${counter}`;
-//     counter += 1;
-// })
-// var bonus = document.getElementById("bonus");
-// bonus.addEventListener("click", () => {
-//     console.log(counter);
-// })
-
-// ===============================================================================
-// Step 2 -
-//      Done at Step 1
-// ===============================================================================
-// Step 3 -
-//      Done at Step 1
-// ===============================================================================
-// Step 4 -
-
-// ===============================================================================
-// Step 5 -
-
-// ===============================================================================
-// Step 6 -
-
-// ===============================================================================
-// Step 7 - Multiplier table
-
-// const multiplierTableCounter = {
-//     "2x": 0,
-//     "5x": 0,
-//     "10x": 0,
-//     "100x": 0,
-// };
-// console.log(multiplierTableCounter["2x"]); // output: 0
-// multiplierTableCounter["2"] = 10;
-// console.log(multiplierTableCounter["2x"]) // output: 10
-// ===============================================================================
-// Step 8 -
-
-// ===============================================================================
-// Step 9 -
-
-// ===============================================================================
-// Step 10 -
-
-// ===============================================================================
-// Step 11 -
-
-// ===============================================================================
-// Step 12 -
-
-// ===============================================================================
-// This allows us to keep count of the times a certain multiplier was purchased
-
 let pointsTag = document.getElementById("points");
 let coockieBtn = document.getElementById("coockie");
 let creditTag = document.getElementById("credit");
@@ -81,7 +16,7 @@ let times100xzoneprice = document.getElementById("price100x");
 let credit = 0;
 var clickValue = 1;
 let multi = 1;
-let clic =0;
+let clic = 0;
 
 let multiplier2x = 2;
 let multiplier5x = 5;
@@ -100,7 +35,7 @@ let autozone = document.getElementById('autozone');
 let autop = document.getElementById('autoP');
 
 let auto_value = 0;
-let autoPrice =  100;
+let autoPrice = 100;
 var points = 0;
 
 let autoclicInterval = null;
@@ -113,7 +48,7 @@ function increaseCookies() {
   points += clickValue;
   increaseCredits();
   displayCookie();
-  buttonActiver();
+  multiplierTaggle();
 }
 
 function displayCookie() {
@@ -134,38 +69,33 @@ function displayMultiplier() {
 }
 
 function applyMultiplier(multiplier, price, element) {
-  credit -= price;
   clickValue *= multiplier;
-
-  buttonActiver();
-  displayCookie();
-  multiBox.innerHTML = "Multiplier : <br>" +clickValue + "*";
-
-  if(credit<price){
-     element.disabled = true; // Disable button after purchase
-  }
-}
-
-function buttonActiver() {
+  credit -= price;
   multiplierTaggle();
+  displayCookie();
+  multiBox.innerHTML = "Multiplier : <br>" + clickValue + "";
+  if (credit > price) {
+    element.disabled = true; // Disable button after purchase
+  }
 }
 
 function rainbow(button) {
   button.addEventListener('click', function () {
     this.classList.add('rainbow');
     setTimeout(() => this.classList.remove('rainbow'), 1000);
+    autoclic.disabled;
   });
 }
 
 function buyAutoClicker() {
   if (credit >= autoPrice) {
-    auto_value +=  0.1; //add 1 clic every 10 sec
+    auto_value += 0.1; //add 1 clic every 10 sec
     credit -= autoPrice;
     autoPrice += 10;
     autoclic.disabled = true;
     autoclicInterval = setInterval(increaseCookies, 10000);
     displayCookie();
-    buttonActiver();
+    multiplierTaggle();
     autozone.innerHTML = "clic/sec : " + auto_value.toFixed(1);
     autop.innerHTML = autoPrice + "C"
   }
@@ -174,27 +104,39 @@ function buyAutoClicker() {
 coockieBtn.addEventListener("click", increaseCookies);
 
 times2xpoint.addEventListener("click", () => {
-  applyMultiplier(multiplier2x, times2xpointPrice, times2xpoint);
-  times2xpointPrice +=5;
-  times2xzoneprice.innerHTML =  times2xpointPrice + "C";
+  if (credit >= times2xpointPrice) {
+    applyMultiplier(multiplier2x, times2xpointPrice, times2xpoint, times2xzoneprice);
+    times2xpointPrice += 5;
+    times2xzoneprice.innerHTML = times2xpointPrice + "C";
+  }
+  multiplierTaggle();
 });
 
 times5xpoint.addEventListener("click", () => {
-  applyMultiplier(multiplier5x, times5xpointPrice, times5xpoint);
-  times5xpointPrice += 10;
-  times5xzoneprice.innerHTML =  times5xpointPrice + "C";
+  if (credit >= times5xpointPrice) {
+    applyMultiplier(multiplier5x, times5xpointPrice, times5xpoint, times5xzoneprice);
+    times5xpointPrice += 10;
+    times5xzoneprice.innerHTML = times5xpointPrice + "C";
+  }
+  multiplierTaggle();
 });
 
 times10xpoint.addEventListener("click", () => {
-  applyMultiplier(multiplier10x, times10xpointPrice, times10xpoint);
-  times10xpointPrice += 30;
-  times10xzoneprice.innerHTML =  times10xpointPrice + "C";
+  if (credit >= times10xpointPrice) {
+    applyMultiplier(multiplier10x, times10xpointPrice, times10xpoint, times10xzoneprice);
+    times10xpointPrice += 30;
+    times10xzoneprice.innerHTML = times10xpointPrice + "C";
+  }
+  multiplierTaggle();
 });
 
 times100xpoint.addEventListener("click", () => {
-  applyMultiplier(multiplier100x, times100xpointPrice, times100xpoint);
-  times100xpointPrice += 200;
-  times100xzoneprice.innerHTML =  times100xpointPrice + "C";
+  if (credit >= times100xpointPrice) {
+    applyMultiplier(multiplier100x, times100xpointPrice, times100xpoint, times100xzoneprice);
+    times100xpointPrice += 200;
+    times100xzoneprice.innerHTML = times100xpointPrice + "C";
+  }
+  multiplierTaggle();
 });
 
 autoclic.addEventListener("click", buyAutoClicker);
@@ -202,4 +144,4 @@ autoclic.addEventListener("click", buyAutoClicker);
 [rainbow(times2xpoint), rainbow(times5xpoint), rainbow(times10xpoint), rainbow(times100xpoint)];
 
 displayCookie();
-buttonActiver();
+multiplierTaggle();
