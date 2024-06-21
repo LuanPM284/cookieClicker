@@ -13,7 +13,7 @@ let times5xzoneprice = document.getElementById("price5x");
 let times10xzoneprice = document.getElementById("price10x");
 let times100xzoneprice = document.getElementById("price100x");
 
-let credit = 100000;
+let credit = 5050;
 var clickValue = 1;
 let multi = 1;
 let clic = 0;
@@ -50,6 +50,7 @@ function multiplierTaggle() {
   times10xpoint.disabled = credit < times10xpointPrice;
   times100xpoint.disabled = credit < times100xpointPrice;
   autoclic.disabled = credit < autoPrice;
+  bonus.disabled = credit < bonusprice;
 }
 
 function displayMultiplier() {
@@ -145,10 +146,6 @@ function buybonus() {
     endTime = Math.floor(Date.now() / 1000) + countdownDuration;
     setInterval(updateCountdown, 1000);
   }
-}
-
-function bonusvalue(){
-  clickValue *= 2
 }
 
 coockieBtn.addEventListener("click", increaseCookies);
