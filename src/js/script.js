@@ -87,6 +87,14 @@ function rainbow(button) {
   });
 }
 
+function rainbow_bonus(button) {
+  button.addEventListener('click', function () {
+    this.classList.add('rainbow');
+    setTimeout(() => this.classList.remove('rainbow'), 30000);
+    autoclic.disabled;
+  });
+}
+
 function buyAutoClicker() {
   if (credit >= autoPrice) {
     auto_value += 0.1; //add 1 clic every 10 sec
