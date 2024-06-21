@@ -68,10 +68,6 @@ let coockieBtn = document.getElementById("coockie");
 let creditTag = document.getElementById("credit");
 let multiBox = document.getElementById("multi-list");
 
-let autoclic = document.getElementById("auto");
-let autozone = document.getElementById('autozone');
-let autop = document.getElementById('autoP');
-
 let times2xpoint = document.getElementById("2x");
 let times5xpoint = document.getElementById("5x");
 let times10xpoint = document.getElementById("10x");
@@ -82,9 +78,6 @@ let times5xzoneprice = document.getElementById("price5x");
 let times10xzoneprice = document.getElementById("price10x");
 let times100xzoneprice = document.getElementById("price100x");
 
-let auto_value = 0;
-let autoPrice =  100;
-var points = 0;
 let credit = 0;
 var clickValue = 1;
 let multi = 1;
@@ -99,6 +92,16 @@ let times2xpointPrice = 10;
 let times5xpointPrice = 50;
 let times10xpointPrice = 100;
 let times100xpointPrice = 1000;
+
+//autoclic
+
+let autoclic = document.getElementById("auto");
+let autozone = document.getElementById('autozone');
+let autop = document.getElementById('autoP');
+
+let auto_value = 0;
+let autoPrice =  100;
+var points = 0;
 
 let autoclicInterval = null;
 
