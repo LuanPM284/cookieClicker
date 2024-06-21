@@ -23,10 +23,10 @@ let multiplier5x = 5;
 let multiplier10x = 10;
 let multiplier100x = 100;
 
-let times2xpointPrice = 10;
-let times5xpointPrice = 50;
-let times10xpointPrice = 100;
-let times100xpointPrice = 1000;
+let times2xpointPrice = 50;
+let times5xpointPrice = 500;
+let times10xpointPrice = 10000;
+let times100xpointPrice = 500000;
 
 //autoclic
 
