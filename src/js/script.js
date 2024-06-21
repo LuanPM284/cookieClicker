@@ -13,7 +13,7 @@ let times5xzoneprice = document.getElementById("price5x");
 let times10xzoneprice = document.getElementById("price10x");
 let times100xzoneprice = document.getElementById("price100x");
 
-let credit = 0;
+let credit = 100000;
 var clickValue = 1;
 let multi = 1;
 let clic = 0;
@@ -37,7 +37,6 @@ let autop = document.getElementById('autoP');
 let auto_value = 0;
 let autoPrice = 100;
 var points = 0;
-
 let autoclicInterval = null;
 
 function increaseCredits() {
@@ -83,15 +82,7 @@ function rainbow(button) {
   button.addEventListener('click', function () {
     this.classList.add('rainbow');
     setTimeout(() => this.classList.remove('rainbow'), 1000);
-    autoclic.disabled;
-  });
-}
-
-function rainbow_bonus(button) {
-  button.addEventListener('click', function () {
-    this.classList.add('rainbow');
-    setTimeout(() => this.classList.remove('rainbow'), 30000);
-    autoclic.disabled;
+    button.disabled;
   });
 }
 
@@ -106,6 +97,48 @@ function buyAutoClicker() {
     multiplierTaggle();
     autozone.innerHTML = "clic/sec : " + auto_value.toFixed(1);
     autop.innerHTML = autoPrice + "C"
+  }
+}
+
+//bonus
+
+let bonus = document.getElementById('bonus');
+let bonusprice = 5000;
+const timer = document.getElementById('timer'); //take the place t owrite countdown
+const countdownDuration = 30; //time of countdown
+let currentTime = Math.floor(Date.now() / 1000); //take the time it starts
+let endTime = currentTime + countdownDuration; //take the time it finish
+
+function updateCountdown() {
+  /*
+  this function make a countdown of 30 sec
+  */
+  currentTime = Math.floor(Date.now() / 1000);
+  const remainingTime = endTime - currentTime;
+  if (remainingTime >= 0) {
+    document.getElementById("countdown").innerHTML = ` (${remainingTime}s)`;
+    bonus.classList.add('rainbow');
+    setTimeout(() => bonus.classList.remove('rainbow'), 30000);
+    bonus.disabled;
+  }
+  else{
+    document.getElementById("countdown").innerHTML = ``
+  }
+
+  if (remainingTime <= 0) {
+    bonus.disabled = false;
+  }
+}
+
+function buybonus() {
+  if (credit >= bonusprice) {
+    credit -= bonusprice;
+    bonusprice *= 2;
+    bonus.disabled = true;
+    displayCookie();
+    multiplierTaggle();
+    endTime = Math.floor(Date.now() / 1000) + countdownDuration;
+    setInterval(updateCountdown, 1000);
   }
 }
 
@@ -144,8 +177,10 @@ times100xpoint.addEventListener("click", () => {
     times100xpointPrice += 200;
     times100xzoneprice.innerHTML = times100xpointPrice + "C";
   }
-  multiplierTaggle();
+
 });
+
+bonus.addEventListener('click', buybonus);
 
 autoclic.addEventListener("click", buyAutoClicker);
 
