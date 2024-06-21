@@ -28,17 +28,6 @@ let times5xpointPrice = 500;
 let times10xpointPrice = 10000;
 let times100xpointPrice = 500000;
 
-//autoclic
-
-let autoclic = document.getElementById("auto");
-let autozone = document.getElementById('autozone');
-let autop = document.getElementById('autoP');
-
-let auto_value = 0;
-let autoPrice = 100;
-var points = 0;
-let autoclicInterval = null;
-
 function increaseCredits() {
   credit += clickValue;
 }
@@ -86,6 +75,18 @@ function rainbow(button) {
   });
 }
 
+//autoclic
+
+let autoclic = document.getElementById("auto");
+let autozone = document.getElementById('autozone');
+let autop = document.getElementById('autoP');
+
+let auto_value = 0;
+let autoPrice = 100;
+var points = 0;
+let autoclicInterval = null;
+
+
 function buyAutoClicker() {
   if (credit >= autoPrice) {
     auto_value += 0.1; //add 1 clic every 10 sec
@@ -109,9 +110,9 @@ const countdownDuration = 30; //time of countdown
 let currentTime = Math.floor(Date.now() / 1000); //take the time it starts
 let endTime = currentTime + countdownDuration; //take the time it finish
 
-function updateCountdown() {
+function updateCountdown() { 
   /*
-  this function make a countdown of 30 sec
+  this function make a countdown of 30 sec for the bonus
   */
   currentTime = Math.floor(Date.now() / 1000);
   const remainingTime = endTime - currentTime;
@@ -119,10 +120,11 @@ function updateCountdown() {
     document.getElementById("countdown").innerHTML = ` (${remainingTime}s)`;
     bonus.classList.add('rainbow');
     setTimeout(() => bonus.classList.remove('rainbow'), 30000);
-    bonus.disabled;
+    coockieBtn.classList.add('rainbow');
+    setTimeout(() => coockieBtn.classList.remove('rainbow'), 30000);
   }
   else{
-    document.getElementById("countdown").innerHTML = ``
+    document.getElementById("countdown").innerHTML = ``;
   }
 
   if (remainingTime <= 0) {
@@ -131,6 +133,9 @@ function updateCountdown() {
 }
 
 function buybonus() {
+  /*
+  this function make operation for the bonus to work 
+  */
   if (credit >= bonusprice) {
     credit -= bonusprice;
     bonusprice *= 2;
@@ -140,6 +145,10 @@ function buybonus() {
     endTime = Math.floor(Date.now() / 1000) + countdownDuration;
     setInterval(updateCountdown, 1000);
   }
+}
+
+function bonusvalue(){
+  clickValue *= 2
 }
 
 coockieBtn.addEventListener("click", increaseCookies);
