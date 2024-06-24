@@ -86,6 +86,7 @@ function increaseCookies() {
   displayCookie();
   buttonActiver();
   displayClickValue();
+  clickSound();
 }
 
 // it will assign the values to the html
@@ -95,13 +96,13 @@ function displayCookie() {
   //   console.log(score);
 }
 function displayClickValue() {
-  clickValueTag.innerText = `Cost: ${clickValue}`;
+  clickValueTag.innerText = `${clickValue}`;
 }
 
 ///// new code dysolay auto click cost
 let autoclickpricetag = document.getElementById("autoclickprice");
 function displayautoClick() {
-  autoclickpricetag.innerText = autoClickeCost;
+  autoclickpricetag.innerText = `Cost: ${autoClickeCost}`;
 }
 
 function displayCost(btnspan, price) {
@@ -142,27 +143,27 @@ function multiplierTaggle() {
   }
 }
 
-multiBox.innerHTML = "";
-function displayMultiplier() {
-  if (multiplerList.length > 0) {
-    multiplerList.forEach((item) => {
-      let p = document.createElement("p");
-      p.innerText = item;
-      let btnClasses = [
-        "border",
-        "border-2",
-        "bg-orange-400",
-        "p-3",
-        "text-orange-100",
-        "font-bold",
-        "rounded-lg",
-        "cursor-auto",
-      ];
-      p.classList.add(...btnClasses);
-      multiBox.appendChild(p);
-    });
-  }
-}
+// multiBox.innerHTML = "";
+// function displayMultiplier() {
+//   if (multiplerList.length > 0) {
+//     multiplerList.forEach((item) => {
+//       let p = document.createElement("p");
+//       p.innerText = item;
+//       let btnClasses = [
+//         "border",
+//         "border-2",
+//         "bg-orange-400",
+//         "p-3",
+//         "text-orange-100",
+//         "font-bold",
+//         "rounded-lg",
+//         "cursor-auto",
+//       ];
+//       p.classList.add(...btnClasses);
+//       multiBox.appendChild(p);
+//     });
+//   }
+// }
 
 function buttonActiver() {
   multiplierTaggle();
@@ -177,10 +178,12 @@ function times2xpointfunction() {
   displayCookie();
   multiplerList.push("2x");
 
-  multiBox.innerHTML = ""; //to make the list empty
+  // multiBox.innerHTML = ""; //to make the list empty
   displayMultiplier();
   displayCost(custspan2x, times2xpointPrice);
   displayClickValue();
+
+  buyclickSound(); //sound function
 }
 
 function times5xpointfunction() {
@@ -191,10 +194,12 @@ function times5xpointfunction() {
   displayCookie();
   multiplerList.push("5x");
 
-  multiBox.innerHTML = ""; //to make the list empty
+  // multiBox.innerHTML = ""; //to make the list empty
   displayMultiplier();
   displayCost(custspan5x, times5xpointPrice);
   displayClickValue();
+
+  buyclickSound(); //sound function
 }
 
 function times10xpointfunction() {
@@ -205,10 +210,12 @@ function times10xpointfunction() {
   displayCookie();
   multiplerList.push("10x");
 
-  multiBox.innerHTML = ""; //to make the list empty
+  // multiBox.innerHTML = ""; //to make the list empty
   displayMultiplier();
   displayCost(custspan10x, times10xpointPrice);
   displayClickValue();
+
+  buyclickSound(); //sound function
 }
 
 function times100xpointfunction() {
@@ -219,10 +226,12 @@ function times100xpointfunction() {
   displayCookie();
   multiplerList.push("100x");
 
-  multiBox.innerHTML = ""; //to make the list empty
+  // multiBox.innerHTML = ""; //to make the list empty
   displayMultiplier();
   displayCost(custspan100x, times100xpointPrice);
   displayClickValue();
+
+  buyclickSound(); //sound function
 }
 
 displayMultiplier();
@@ -269,3 +278,57 @@ function startFunction() {
 }
 
 AutoClickBtn.addEventListener("click", startFunction);
+
+// new codes 24/6/2024
+//commented the (  // multiBox.innerHTML = ""; ) from each button
+let persecond = document.getElementById("persecond"); //the tag that show the value of
+
+let activeBooster2xbutton = document.getElementById("activeBooster2xbutton"); // the active button tag
+let activeBooster2xNum = document.getElementById("activeBooster2xNum"); // the bedge show the number of time the button us used
+let activeBooster5xbutton = document.getElementById("activeBooster5xbutton");
+let activeBooster5xNum = document.getElementById("activeBooster5xNum");
+
+let activeBooster10xbutton = document.getElementById("activeBooster10xbutton");
+let activeBooster10xNum = document.getElementById("activeBooster10xNum");
+
+let activeBooster100xbutton = document.getElementById(
+  "activeBooster100xbutton"
+);
+let activeBooster100xNum = document.getElementById("activeBooster100xNum");
+
+function displayMultiplier() {
+  //will check if there is a multipeier in the array
+  if (multiplerList.includes("2x")) {
+    //remove the hidden class for the tag
+    activeBooster2xbutton.classList.remove("hidden");
+    //set the text with the value come for the function which is the number same item un array
+    activeBooster2xNum.textContent = getOccurrence(multiplerList, "2x");
+  }
+  if (multiplerList.includes("5x")) {
+    activeBooster5xbutton.classList.remove("hidden");
+    activeBooster5xNum.textContent = getOccurrence(multiplerList, "5x");
+  }
+  if (multiplerList.includes("10x")) {
+    activeBooster10xbutton.classList.remove("hidden");
+    activeBooster10xNum.textContent = getOccurrence(multiplerList, "10x");
+  }
+  if (multiplerList.includes("100x")) {
+    activeBooster100xbutton.classList.remove("hidden");
+    activeBooster100xNum.textContent = getOccurrence(multiplerList, "100x");
+  }
+}
+
+//will check how meany time a booster is used (will check the array and see how meany time the given item is in the array)
+function getOccurrence(array, value) {
+  return array.filter((v) => v === value).length;
+}
+
+//this function will play sound when called
+function clickSound() {
+  var sound = new Audio("public/sound/clickb7.mp3");
+  sound.play();
+}
+function buyclickSound() {
+  var sound = new Audio("public/sound/buy3.mp3");
+  sound.play();
+}
