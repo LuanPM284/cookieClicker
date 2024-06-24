@@ -260,21 +260,30 @@ times100xpoint.addEventListener("click", times100xpointfunction);
 
 let AutoClickBtn = document.getElementById("AutoClickBtn");
 
+//new code for auto clicker  show how much time left
+let autoclikecount = document.getElementById("autoclikecount");
+autoclikecount.textContent = `10s`;
+
 function startFunction() {
-  let count = 0;
+  autoclikecount.classList.remove("hidden");
+  let count = 10;
   credit -= autoClickeCost;
   autoClickeCost *= 2;
+
   const intervalId = setInterval(() => {
     increaseCookies();
-    increaseCredits();
     buttonActiver();
 
     console.log("clicked");
-    count++;
-    if (count >= 10) {
+    count--;
+    autoclikecount.textContent = `${count}s`;
+    if (count <= 0) {
       clearInterval(intervalId);
+      autoclikecount.textContent = `10s`;
+      autoclikecount.classList.add("hidden");
     }
   }, 1000);
+  buyclickSound();
 }
 
 AutoClickBtn.addEventListener("click", startFunction);
@@ -325,10 +334,10 @@ function getOccurrence(array, value) {
 
 //this function will play sound when called
 function clickSound() {
-  var sound = new Audio("public/sound/clickb7.mp3");
+  var sound = new Audio("sound/clickb7.mp3");
   sound.play();
 }
 function buyclickSound() {
-  var sound = new Audio("public/sound/buy3.mp3");
+  var sound = new Audio("sound/buy3.mp3");
   sound.play();
 }
