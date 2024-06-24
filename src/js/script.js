@@ -1,155 +1,185 @@
-let pointsTag = document.getElementById("points");
-let coockieBtn = document.getElementById("coockie");
-let creditTag = document.getElementById("credit");
-let multiBox = document.getElementById("multi-list");
 
-let times2xpoint = document.getElementById("2x");
-let times5xpoint = document.getElementById("5x");
-let times10xpoint = document.getElementById("10x");
-let times100xpoint = document.getElementById("100x");
+// ================================================================
+// Pseudo-Code some principles on how it all can work:
+// a defaultValue that will take all transformations from the multipliers and bonus
+// a total Value that is the result of all those transformations
+// a display the credits that will show on screen the credits and points 
+// for the bonus I need to focus on two things, add a 2 times extra totalValue and make it so it works only for 30 secondes
+//  bonus (click) => totalValue * 2 (30s) => display totalValue + display counter 30s => stop * 2 and return totalValue to previous defaultValue  
 
-let times2xzoneprice = document.getElementById("price2x");
-let times5xzoneprice = document.getElementById("price5x");
-let times10xzoneprice = document.getElementById("price10x");
-let times100xzoneprice = document.getElementById("price100x");
 
-let credit = 0;
-var clickValue = 1;
-let multi = 1;
-let clic = 0;
+// // get buttons from HTML
+// const coockieBtn = document.getElementById("coockie");
+// const bonusBtn = document.getElementById("bonus");
+// const pointsDisplay = document.getElementById("points")
+// const creditDisplay = document.getElementById("credit")
 
-let multiplier2x = 2;
-let multiplier5x = 5;
-let multiplier10x = 10;
-let multiplier100x = 100;
+// // button update, to turn off when not in use
+// const bonusUpdate = document.querySelector("#bonus");
 
-let times2xpointPrice = 10;
-let times5xpointPrice = 50;
-let times10xpointPrice = 100;
-let times100xpointPrice = 1000;
+// // variables that change
+// let points = 0;
+// let credits = 0;
+// let creditClick = 1;
 
-//autoclic
+// // some prices and updates
+// let bonusMultiplier = 2;
+// let bonusPrice = 5;
+// const bonusDuration = 30000;
 
-let autoclic = document.getElementById("auto");
-let autozone = document.getElementById('autozone');
-let autop = document.getElementById('autoP');
+// let bonusActive = false;
 
-let auto_value = 0;
-let autoPrice = 100;
-var points = 0;
+// showCredits();
 
-let autoclicInterval = null;
+// //Envent Listener
+// coockieBtn.addEventListener("click", addCredit);
+// bonusBtn.addEventListener("click", activateBonus);
 
-function increaseCredits() {
-  credit += clickValue;
+// function showCredits() {
+//   // Credits
+//   creditDisplay.innerHTML = "Credit : " + formatNumber(credits);
+//   pointsDisplay.innerHTML = "Point : " + formatNumber(points);
+//   bonusBtn.innerHTML = `Bonus (${bonusPrice})C`
+// };
+
+// function activateBonus() {
+//   if (credits >= bonusPrice && !bonusActive) {
+//     credits -= bonusPrice;
+//     bonusActive = true;
+//     creditClick *= bonusMultiplier;
+//     showCredits();
+//     bonusBtn.disabled = true;
+//     setTimeout(deactivateBonus, bonusDuration);
+//   } else {
+//     showCredits();
+//   }
+// }
+
+// function deactivateBonus() {
+//   creditClick /= bonusMultiplier;
+//   bonusActive = false;
+//   bonusBtn.disabled = false;
+//   bonusPrice += 5; // Increase the cost for next use
+//   showCredits();
+// }
+
+
+// function addCredit() {
+//   credits += creditClick;
+//   points += creditClick;
+//   showCredits();
+// };
+// function addBonus() {
+//   creditClick *= bonusMultiplier;
+// }
+// function formatNumber(num) {
+//   if (num > 1000000000) {
+//     return (num / 1000000000).toFixed(2) + "Mld";
+//   }
+//   if (num > 1000000) {
+//     return (num / 1000000).toFixed(2) + "Mll";
+//   }
+//   if (num > 1000) {
+//     return (num / 1000).toFixed(2) + "k";
+//   }
+//   return num;
+// }
+// ============================================ Code final ====================================
+// Other than the timer of 30 secondes and the display of seconds( help with GPT) I was able to do the rest
+// get buttons from HTML
+const coockieBtn = document.getElementById("coockie");
+const bonusBtn = document.getElementById("bonus");
+const pointsDisplay = document.getElementById("points")
+const creditDisplay = document.getElementById("credit")
+const bonusTimerDisplay = document.getElementById("bonus-timer");
+
+// button update, to turn off when not in use
+const bonusUpdate = document.querySelector("#bonus");
+
+// variables that change
+let points = 0;
+let credits = 0;
+let creditClick = 1;
+
+// some prices and updates
+let bonusMultiplier = 2;
+let bonusPrice = 5;
+const bonusDuration = 30000; // 30 seconds
+
+let bonusActive = false;
+let bonusInterval = null;
+
+showCredits();
+
+// Event Listeners
+coockieBtn.addEventListener("click", addCredit);
+bonusBtn.addEventListener("click", activateBonus);
+
+function showCredits() {
+  // Credits
+  creditDisplay.innerHTML = "Credit : " + formatNumber(credits);
+  pointsDisplay.innerHTML = "Point : " + formatNumber(points);
+  bonusBtn.innerHTML = `Bonus (${bonusPrice}C)`;
+  bonusTimerDisplay.innerHTML = ""; // Clear the timer display when bonus is available
 }
 
-function increaseCookies() {
-  points += clickValue;
-  increaseCredits();
-  displayCookie();
-  multiplierTaggle();
-}
-
-function displayCookie() {
-  pointsTag.innerHTML = `Points: ` + points;
-  creditTag.innerHTML = `Credit: <br>` + credit;
-}
-
-function multiplierTaggle() {
-  times2xpoint.disabled = credit < times2xpointPrice;
-  times5xpoint.disabled = credit < times5xpointPrice;
-  times10xpoint.disabled = credit < times10xpointPrice;
-  times100xpoint.disabled = credit < times100xpointPrice;
-  autoclic.disabled = credit < autoPrice;
-}
-
-function displayMultiplier() {
-  multiBox.innerHTML += "<br>" + multi;
-}
-
-function applyMultiplier(multiplier, price, element) {
-  clickValue *= multiplier;
-  credit -= price;
-  multiplierTaggle();
-  displayCookie();
-  multiBox.innerHTML = "Multiplier : <br>" + clickValue + "";
-  if (credit > price) {
-    element.disabled = true; // Disable button after purchase
+function activateBonus() {
+  if (credits >= bonusPrice && !bonusActive) {
+    credits -= bonusPrice;
+    bonusActive = true;
+    creditClick *= bonusMultiplier;
+    showCredits();
+    bonusBtn.disabled = true;
+    startBonusTimer(bonusDuration / 1000); // Start the timer in seconds
+    setTimeout(deactivateBonus, bonusDuration);
+  } else {
+    showCredits();
   }
 }
 
-function rainbow(button) {
-  button.addEventListener('click', function () {
-    this.classList.add('rainbow');
-    setTimeout(() => this.classList.remove('rainbow'), 1000);
-    autoclic.disabled;
-  });
+function deactivateBonus() {
+  creditClick /= bonusMultiplier;
+  bonusActive = false;
+  bonusBtn.disabled = false;
+  bonusPrice += 5; // Increase the cost for next use
+  clearInterval(bonusInterval); // Clear the interval when bonus deactivates
+  showCredits();
 }
 
-function rainbow_bonus(button) {
-  button.addEventListener('click', function () {
-    this.classList.add('rainbow');
-    setTimeout(() => this.classList.remove('rainbow'), 30000);
-    autoclic.disabled;
-  });
+function addCredit() {
+  credits += creditClick;
+  points += creditClick;
+  showCredits();
 }
 
-function buyAutoClicker() {
-  if (credit >= autoPrice) {
-    auto_value += 0.1; //add 1 clic every 10 sec
-    credit -= autoPrice;
-    autoPrice += 10;
-    autoclic.disabled = true;
-    autoclicInterval = setInterval(increaseCookies, 10000);
-    displayCookie();
-    multiplierTaggle();
-    autozone.innerHTML = "clic/sec : " + auto_value.toFixed(1);
-    autop.innerHTML = autoPrice + "C"
-  }
+function startBonusTimer(duration) {
+  let timer = duration;
+  bonusInterval = setInterval(function () {
+    let minutes = parseInt(timer / 60, 10);
+    let seconds = parseInt(timer % 60, 10);
+
+    minutes = minutes < 10 ? "0" + minutes : minutes;
+    seconds = seconds < 10 ? "0" + seconds : seconds;
+
+    bonusTimerDisplay.innerHTML = "Timer: " + minutes + ":" + seconds;
+
+    if (--timer < 0) {
+      clearInterval(bonusInterval); // Clear the interval when the timer ends
+      bonusTimerDisplay.innerHTML = ""; // Clear the timer display when bonus is available
+    }
+  }, 1000);
+  bonusTimerDisplay.innerHTML = ""; // Clear the timer display when bonus is available
 }
 
-coockieBtn.addEventListener("click", increaseCookies);
-
-times2xpoint.addEventListener("click", () => {
-  if (credit >= times2xpointPrice) {
-    applyMultiplier(multiplier2x, times2xpointPrice, times2xpoint, times2xzoneprice);
-    times2xpointPrice += 5;
-    times2xzoneprice.innerHTML = times2xpointPrice + "C";
+function formatNumber(num) {
+  if (num > 1000000000) {
+    return (num / 1000000000).toFixed(2) + "Mld";
   }
-  multiplierTaggle();
-});
-
-times5xpoint.addEventListener("click", () => {
-  if (credit >= times5xpointPrice) {
-    applyMultiplier(multiplier5x, times5xpointPrice, times5xpoint, times5xzoneprice);
-    times5xpointPrice += 10;
-    times5xzoneprice.innerHTML = times5xpointPrice + "C";
+  if (num > 1000000) {
+    return (num / 1000000).toFixed(2) + "Mll";
   }
-  multiplierTaggle();
-});
-
-times10xpoint.addEventListener("click", () => {
-  if (credit >= times10xpointPrice) {
-    applyMultiplier(multiplier10x, times10xpointPrice, times10xpoint, times10xzoneprice);
-    times10xpointPrice += 30;
-    times10xzoneprice.innerHTML = times10xpointPrice + "C";
+  if (num > 1000) {
+    return (num / 1000).toFixed(2) + "k";
   }
-  multiplierTaggle();
-});
-
-times100xpoint.addEventListener("click", () => {
-  if (credit >= times100xpointPrice) {
-    applyMultiplier(multiplier100x, times100xpointPrice, times100xpoint, times100xzoneprice);
-    times100xpointPrice += 200;
-    times100xzoneprice.innerHTML = times100xpointPrice + "C";
-  }
-  multiplierTaggle();
-});
-
-autoclic.addEventListener("click", buyAutoClicker);
-
-[rainbow(times2xpoint), rainbow(times5xpoint), rainbow(times10xpoint), rainbow(times100xpoint)];
-
-displayCookie();
-multiplierTaggle();
+  return num;
+}
