@@ -13,7 +13,7 @@ let times5xzoneprice = document.getElementById("price5x");
 let times10xzoneprice = document.getElementById("price10x");
 let times100xzoneprice = document.getElementById("price100x");
 
-let credit = 5050;
+let credit = 0;
 var clickValue = 1;
 let multi = 1;
 let clic = 0;
@@ -28,8 +28,7 @@ let times5xpointPrice = 500;
 let times10xpointPrice = 10000;
 let times100xpointPrice = 500000;
 
-let bonusprice = 5000;
-let bonus = document.getElementById('bonus');
+
 
 function increaseCredits() {
   credit += clickValue;
@@ -107,6 +106,8 @@ function buyAutoClicker() {
 
 //bonus
 
+let bonusprice = 5000;
+let bonus = document.getElementById('bonus');
 const timer = document.getElementById('timer'); //take the place t owrite countdown
 const countdownDuration = 30; //time of countdown
 let currentTime = Math.floor(Date.now() / 1000); //take the time it starts
