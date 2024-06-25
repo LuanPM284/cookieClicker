@@ -42,6 +42,17 @@ let creditTag = document.getElementById("credit");
 let multiBox = document.getElementById("multi-list"); // div that show all the multipy buttons
 let clickValueTag = document.getElementById("clickValue");
 
+let bonus = document.getElementById("bonus");
+let bonusprice = 50;
+
+//auto click
+let autoPrice = 100; // for auto click price
+let autoclic = document.getElementById("AutoClickBtn");
+let autozone = document.getElementById("autozone"); // value of auto click persicond
+let autop = document.getElementById("autoclickprice"); //cost
+
+let auto_value = 0;
+
 //cost botton price
 let custspan2x = document.getElementById("custspan2x");
 let custspan5x = document.getElementById("custspan5x");
@@ -142,6 +153,21 @@ function multiplierTaggle() {
   } else {
     AutoClickBtn.disabled = true;
   }
+
+  if (credit >= bonusprice) {
+    //bonus btn activer
+    bonus.disabled = false;
+    console.log("bunos disable");
+  } else {
+    bonus.disabled = true;
+    console.log("no");
+  }
+  if (credit >= autoPrice) {
+    // auto clicker btn activer
+    autoclic.disabled = false;
+  } else {
+    autoclic.disabled = true;
+  }
 }
 
 // multiBox.innerHTML = "";
@@ -240,6 +266,8 @@ displayCookie();
 displayClickValue();
 displayautoClick();
 
+buttonActiver();
+
 displayCost(custspan2x, times2xpointPrice);
 displayCost(custspan5x, times5xpointPrice);
 displayCost(custspan10x, times10xpointPrice);
@@ -259,36 +287,36 @@ times100xpoint.addEventListener("click", times100xpointfunction);
 
 ///new code
 
-let AutoClickBtn = document.getElementById("AutoClickBtn");
+// let AutoClickBtn = document.getElementById("AutoClickBtn");
 
-//new code for auto clicker  show how much time left
-let autoclikecount = document.getElementById("autoclikecount"); //this the tag to display countdown
-autoclikecount.textContent = `10s`; //setting the defualt value 10
+// //new code for auto clicker  show how much time left
+// let autoclikecount = document.getElementById("autoclikecount"); //this the tag to display countdown
+// autoclikecount.textContent = `10s`; //setting the defualt value 10
 
-function startFunction() {
-  autoclikecount.classList.remove("hidden"); // remove the hidden tag to display the tag
-  let count = 10;
-  credit -= autoClickeCost;
-  autoClickeCost *= 2;
+// function startFunction() {
+//   autoclikecount.classList.remove("hidden"); // remove the hidden tag to display the tag
+//   let count = 10;
+//   credit -= autoClickeCost;
+//   autoClickeCost *= 2;
 
-  const intervalId = setInterval(() => {
-    increaseCookies();
-    buttonActiver();
+//   const intervalId = setInterval(() => {
+//     increaseCookies();
+//     buttonActiver();
 
-    console.log("clicked");
-    count--;
-    autoclikecount.textContent = `${count}s`; //adding the new value
-    if (count == 0) {
-      clearInterval(intervalId);
-      //after count is over set the defualt value and hide the tag
-      autoclikecount.textContent = `10s`;
-      autoclikecount.classList.add("hidden");
-    }
-  }, 1000);
-  buyclickSound();
-}
+//     console.log("clicked");
+//     count--;
+//     autoclikecount.textContent = `${count}s`; //adding the new value
+//     if (count == 0) {
+//       clearInterval(intervalId);
+//       //after count is over set the defualt value and hide the tag
+//       autoclikecount.textContent = `10s`;
+//       autoclikecount.classList.add("hidden");
+//     }
+//   }, 1000);
+//   buyclickSound();
+// }
 
-AutoClickBtn.addEventListener("click", startFunction);
+// AutoClickBtn.addEventListener("click", startFunction);
 
 // new codes 24/6/2024
 //commented the (  // multiBox.innerHTML = ""; ) from each button
@@ -346,65 +374,140 @@ function buyclickSound() {
 
 // down codes are saving data procedure
 
-// load the saved data
-window.onload = function () {
-  // when page load this will be called
-  loadGame();
-  // calling th display function to update the tags data
-  displayMultiplier();
-  displayCookie();
-  displayClickValue();
-  displayautoClick();
-  buttonActiver();
-};
+// // load the saved data
+// window.onload = function () {
+//   // when page load this will be called
+//   loadGame();
+//   // calling th display function to update the tags data
+//   displayMultiplier();
+//   displayCookie();
+//   displayClickValue();
+//   displayautoClick();
+//   buttonActiver();
+// };
 
-// set the data form the cookie to the variables
-function loadGame() {
-  var saveData = JSON.parse(localStorage.getItem("saveData"));
-  // checking if there are variables in the cookie
-  if (typeof saveData.points !== "undefined") points = saveData.points;
-  if (typeof saveData.credit !== "undefined") credit = saveData.credit;
-  if (typeof saveData.clickValue !== "undefined")
-    clickValue = saveData.clickValue;
-  if (typeof saveData.multiplerList !== "undefined")
-    multiplerList = saveData.multiplerList;
+// // set the data form the cookie to the variables
+// function loadGame() {
+//   var saveData = JSON.parse(localStorage.getItem("saveData"));
+//   // checking if there are variables in the cookie
+//   if (typeof saveData.points !== "undefined") points = saveData.points;
+//   if (typeof saveData.credit !== "undefined") credit = saveData.credit;
+//   if (typeof saveData.clickValue !== "undefined")
+//     clickValue = saveData.clickValue;
+//   if (typeof saveData.multiplerList !== "undefined")
+//     multiplerList = saveData.multiplerList;
 
-  if (typeof saveData.times2xpointPrice !== "undefined")
-    times2xpointPrice = saveData.times2xpointPrice;
+//   if (typeof saveData.times2xpointPrice !== "undefined")
+//     times2xpointPrice = saveData.times2xpointPrice;
 
-  if (typeof saveData.times5xpointPrice !== "undefined")
-    times5xpointPrice = saveData.times5xpointPrice;
+//   if (typeof saveData.times5xpointPrice !== "undefined")
+//     times5xpointPrice = saveData.times5xpointPrice;
 
-  if (typeof saveData.times10xpointPrice !== "undefined")
-    times10xpointPrice = saveData.times10xpointPrice;
+//   if (typeof saveData.times10xpointPrice !== "undefined")
+//     times10xpointPrice = saveData.times10xpointPrice;
 
-  if (typeof saveData.times100xpointPrice !== "undefined")
-    times100xpointPrice = saveData.times100xpointPrice;
+//   if (typeof saveData.times100xpointPrice !== "undefined")
+//     times100xpointPrice = saveData.times100xpointPrice;
 
-  if (typeof saveData.autoClickeCost !== "undefined")
-    autoClickeCost = saveData.autoClickeCost;
+//   if (typeof saveData.autoClickeCost !== "undefined")
+//     autoClickeCost = saveData.autoClickeCost;
+// }
+
+// // when the user want to close the tab save all user data
+// window.addEventListener("beforeunload", function (e) {
+//   // when the window close this function will be called
+//   SaveProgress();
+// });
+
+// // this function will create a cookie and save data to it
+// function SaveProgress() {
+//   // this is a object with all the data from the page
+//   var saveGame = {
+//     points: points,
+//     credit: credit,
+//     clickValue: clickValue,
+//     multiplerList: multiplerList,
+//     times2xpointPrice: times2xpointPrice,
+//     times5xpointPrice: times5xpointPrice,
+//     times10xpointPrice: times10xpointPrice,
+//     times100xpointPrice: times100xpointPrice,
+//     autoClickeCost: autoClickeCost,
+//   };
+//   // this will create a cookie by the name of saveData and inside it will be the object in Jason format
+//   localStorage.setItem("saveData", JSON.stringify(saveGame));
+// }
+
+// code for bunos
+
+const timer = document.getElementById("timer"); //take the place t owrite countdown
+const countdownDuration = 30; //time of countdown
+let currentTime = Math.floor(Date.now() / 1000); //take the time it starts
+let endTime = currentTime + countdownDuration; //take the time it finish
+
+function updateCountdown() {
+  // this function make a countdown of 30 sec for the bonus
+  currentTime = Math.floor(Date.now() / 1000);
+  const remainingTime = endTime - currentTime;
+  if (remainingTime >= 0) {
+    document.getElementById("countdown").innerHTML = `${remainingTime}s`;
+    // bonus.classList.add("rainbow");
+    setTimeout(() => bonus.classList.remove("rainbow"), 30000);
+    // coockieBtn.classList.add("rainbow");
+    // setTimeout(() => coockieBtn.classList.remove("rainbow"), 30000);
+    document.getElementById("countdown").classList.remove("hidden");
+  } else {
+    // bonus.disabled = credit < bonusprice;
+    // multiplierTaggle();
+    document.getElementById("countdown").classList.add("hidden");
+  }
 }
 
-// when the user want to close the tab save all user data
-window.addEventListener("beforeunload", function (e) {
-  // when the window close this function will be called
-  SaveProgress();
+function buybonus() {
+  // this function make operation for the bonus to work
+
+  if (credit >= bonusprice) {
+    credit -= bonusprice;
+    bonusprice *= 2;
+    document.getElementById("bonuszone").innerHTML = "Cost: " + bonusprice;
+    displayCookie();
+    multiplierTaggle();
+    endTime = Math.floor(Date.now() / 1000) + countdownDuration;
+    setInterval(updateCountdown, 1000);
+    clickValue *= 2;
+    // multiBox.innerHTML = "Multiplier : <br>" + clickValue;
+
+    setTimeout(() => {
+      clickValue /= 2;
+      // multiBox.innerHTML = "Multiplier : <br>" + clickValue;
+      multiplierTaggle();
+      displayClickValue();
+    }, 30000);
+  }
+
+  displayClickValue();
+}
+
+bonus.addEventListener("click", () => {
+  buybonus();
 });
 
-// this function will create a cookie and save data to it
-function SaveProgress() {
-  // this is a object with all the data from the page
-  var saveGame = {
-    points: points,
-    credit: credit,
-    clickValue: clickValue,
-    multiplerList: multiplerList,
-    times2xpointPrice: times2xpointPrice,
-    times5xpointPrice: times5xpointPrice,
-    times10xpointPrice: times10xpointPrice,
-    times100xpointPrice: times100xpointPrice,
-    autoClickeCost: autoClickeCost,
-  };
-  // this will create a cookie by the name of saveData and inside it will be the object in Jason format
-  localStorage.setItem("saveData", JSON.stringify(saveGame));
+//////// codes for auto-click
+
+// var points = 0;
+let autoclicInterval = null;
+
+function buyAutoClicker() {
+  if (credit >= autoPrice) {
+    auto_value += 1; //add 1 click every 10 sec
+    credit -= autoPrice;
+    autoPrice += 10;
+    // autoclic.disabled = true;
+    autoclicInterval = setInterval(increaseCookies, 10000);
+    displayCookie();
+    multiplierTaggle();
+    autozone.innerHTML = auto_value + " click par 10s ";
+    autop.innerHTML = "Cost" + autoPrice;
+  }
 }
+
+autoclic.addEventListener("click", buyAutoClicker);
