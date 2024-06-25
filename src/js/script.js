@@ -28,6 +28,9 @@ let times5xpointPrice = 500;
 let times10xpointPrice = 10000;
 let times100xpointPrice = 500000;
 
+let bonusprice = 5000;
+let bonus = document.getElementById('bonus');
+
 function increaseCredits() {
   credit += clickValue;
 }
@@ -104,8 +107,6 @@ function buyAutoClicker() {
 
 //bonus
 
-let bonus = document.getElementById('bonus');
-let bonusprice = 5000;
 const timer = document.getElementById('timer'); //take the place t owrite countdown
 const countdownDuration = 30; //time of countdown
 let currentTime = Math.floor(Date.now() / 1000); //take the time it starts
@@ -126,7 +127,7 @@ function updateCountdown() {
   }
   else {
     document.getElementById("countdown").innerHTML = ``;
-    bonus.disabled = false;
+    bonus.disabled = credit < bonusprice;
   }
 }
 
@@ -137,15 +138,18 @@ function buybonus() {
   if (credit >= bonusprice) {
     credit -= bonusprice;
     bonusprice *= 2;
+    document.getElementById('bonuszone').innerHTML = bonusprice + " C"
     bonus.disabled = true;
     displayCookie();
     multiplierTaggle();
     endTime = Math.floor(Date.now() / 1000) + countdownDuration;
     setInterval(updateCountdown, 1000);
     clickValue *= 2;
+    multiBox.innerHTML = "Multiplier : <br>" + clickValue;
     setTimeout(() => {
       clickValue /= 2;
       multiBox.innerHTML = "Multiplier : <br>" + clickValue;
+      multiplierTaggle();
     }, 30000);
   }
 }
