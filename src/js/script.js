@@ -126,9 +126,6 @@ function updateCountdown() {
   }
   else {
     document.getElementById("countdown").innerHTML = ``;
-  }
-
-  if (remainingTime <= 0) {
     bonus.disabled = false;
   }
 }
@@ -148,6 +145,7 @@ function buybonus() {
     clickValue *= 2;
     setTimeout(() => {
       clickValue /= 2;
+      multiBox.innerHTML = "Multiplier : <br>" + clickValue;
     }, 30000);
   }
 }
@@ -157,33 +155,16 @@ coockieBtn.addEventListener("click", increaseCookies);
 
 coockieBtn.addEventListener("click", increaseCookies);
 
-times2xpoint.addEventListener("click", () => { if (credit >= times2xpointPrice) { applyMultiplier(multiplier2x, times2xpointPrice, times2xpoint, times2xzoneprice); times2xpointPrice += 5; times2xzoneprice.innerHTML = times2xpointPrice + "C"; } multiplierTaggle(); });
+times2xpoint.addEventListener("click", () => { if (credit >= times2xpointPrice) { applyMultiplier(multiplier2x, times2xpointPrice, times2xpoint); times2xpointPrice += 5; times2xzoneprice.innerHTML = times2xpointPrice + "C"; } multiplierTaggle(); });
 
-times5xpoint.addEventListener("click", () => { if (credit >= times5xpointPrice) { applyMultiplier(multiplier5x, times5xpointPrice, times5xpoint, times5xzoneprice); times5xpointPrice += 10; times5xzoneprice.innerHTML = times5xpointPrice + "C"; } multiplierTaggle(); });
+times5xpoint.addEventListener("click", () => { if (credit >= times5xpointPrice) { applyMultiplier(multiplier5x, times5xpointPrice, times5xpoint); times5xpointPrice += 10; times5xzoneprice.innerHTML = times5xpointPrice + "C"; } multiplierTaggle(); });
 
-times10xpoint.addEventListener("click", () => { 
-  if (credit >= times10xpointPrice) { 
-    applyMultiplier(multiplier10x, times10xpointPrice, times10xpoint, times10xzoneprice); times10xpointPrice += 30; times10xzoneprice.innerHTML = times10xpointPrice + "C"; } multiplierTaggle(); });
+times10xpoint.addEventListener("click", () => { if (credit >= times10xpointPrice) { applyMultiplier(multiplier10x, times10xpointPrice, times10xpoint); times10xpointPrice += 30; times10xzoneprice.innerHTML = times10xpointPrice + "C"; } multiplierTaggle(); });
 
-times100xpoint.addEventListener("click", () => {
-  if (credit >= times100xpointPrice) { applyMultiplier(multiplier100x, times100xpointPrice, times100xpoint, times100xzoneprice); times100xpointPrice += 200; times100xzoneprice.innerHTML = times100xpointPrice + "C"; }
-
-});
+times100xpoint.addEventListener("click", () => {if (credit >= times100xpointPrice) { applyMultiplier(multiplier100x, times100xpointPrice, times100xpoint, times100xzoneprice); times100xpointPrice += 200; times100xzoneprice.innerHTML = times100xpointPrice + "C"; }});
 
 bonus.addEventListener('click', () => {
-  buybonus(); let mul_bonus = 1; times2xpoint.addEventListener("click", () => { if (credit >= times2xpointPrice) { applyMultiplier(multiplier2x * 2, times2xpointPrice, times2xpoint, times2xzoneprice); times2xpointPrice += 5; times2xzoneprice.innerHTML = times2xpointPrice + "C"; } multiplierTaggle(); });
-
-  times5xpoint.addEventListener("click", () => { if (credit >= times5xpointPrice) { applyMultiplier(multiplier5x * 2, times5xpointPrice, times5xpoint, times5xzoneprice); times5xpointPrice += 10; times5xzoneprice.innerHTML = times5xpointPrice + "C"; } multiplierTaggle(); });
-
-  times10xpoint.addEventListener("click", () => { if (credit >= times10xpointPrice) { applyMultiplier(multiplier10x * 2, times10xpointPrice, times10xpoint, times10xzoneprice); times10xpointPrice += 30; times10xzoneprice.innerHTML = times10xpointPrice + "C"; } multiplierTaggle(); });
-
-  times100xpoint.addEventListener("click", () => { if (credit >= times100xpointPrice) { applyMultiplier(multiplier100x * 2, times100xpointPrice, times100xpoint, times100xzoneprice); times100xpointPrice += 200; times100xzoneprice.innerHTML = times100xpointPrice + "C"; } multiplierTaggle(); });
-
-  console.log(clickValue)
-
-  setTimeout(() => { 
-    multiBox.innerHTML = "Multiplier : <br>" + clickValue; }, 
-    30000);
+  buybonus(); 
 });
 
 autoclic.addEventListener("click", buyAutoClicker);
