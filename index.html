@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <script type="module" crossorigin src="/cookieClicker/assets/index-4mPs-QkH.js"></script>
+    <link rel="stylesheet" crossorigin href="/cookieClicker/assets/index-CBTolOY7.css">
+  </head>
+  <body class="bg-orange-50 flex items-center justify-center">
+    <main
+      class="container bg-orange-200 rounded-md shadow-xl m-1 lg:mt-8 md:mt-4"
+      style="max-width: 700px"
+    >
+      <div class="w-100 text-center p-3 mb-3">
+        <h1 class="font-bold text-4xl text-orange-600">Cookie Clicker</h1>
+      </div>
+      <div class="grid grid-cols-1 gap-4 md:grid-cols-2 sm:grid-cols-1">
+        <div class="text-center">
+          <h2 class="font-bold text-2xl">- Cookies -</h2>
+          <p class="">
+            <b>Total</b> :
+            <span
+              class="bg-orange-800 rounded-md p-1 text-orange-100"
+              id="points"
+            ></span>
+          </p>
+          <p class="text-xs"><b>Per second : </b>0</p>
+          <button class="mt-4" id="coockie">
+            <img
+              class="cursor-copy w-56 active:animate-ping"
+              src="https://static.vecteezy.com/system/resources/previews/010/974/162/original/chocolate-chip-cookies-file-free-png.png"
+              alt=" cookie image"
+            />
+          </button>
+          <p class="text-sm mb-2">Click Value: <span id="clickValue"></span></p>
+          <div
+            class="w-64 shadow-lg mb-5 mx-auto shadow-orange-300 border-orange-500"
+          >
+            <p class="font-bold">Active Boosters</p>
+            <div class="flex flex-row gap-3 p-3 justify-center" id="multi-list">
+              <p
+                class="hidden relative border-2 bg-orange-400 p-3 text-orange-100 font-bold rounded-lg"
+                id="activeBooster2xbutton"
+              >
+                <span
+                  class="absolute inline-flex items-center justify-center w-6 h-6 text-xs font-bold text-white bg-red-500 rounded-full -top-2 -end-2 dark:border-gray-900 border-transparent"
+                  id="activeBooster2xNum"
+                  >0</span
+                >
+                2x
+              </p>
+              <p
+                class="hidden relative border-2 bg-orange-400 p-3 text-orange-100 font-bold rounded-lg"
+                id="activeBooster5xbutton"
+              >
+                <span
+                  class="absolute inline-flex items-center justify-center w-6 h-6 text-xs font-bold text-white bg-red-500 rounded-full -top-2 -end-2 dark:border-gray-900 border-transparent"
+                  id="activeBooster5xNum"
+                  >0</span
+                >
+                5x
+              </p>
+              <p
+                class="hidden relative border-2 bg-orange-400 p-3 text-orange-100 font-bold rounded-lg"
+                id="activeBooster10xbutton"
+              >
+                <span
+                  class="absolute inline-flex items-center justify-center w-6 h-6 text-xs font-bold text-white bg-red-500 rounded-full -top-2 -end-2 dark:border-gray-900 border-transparent"
+                  id="activeBooster10xNum"
+                  >0</span
+                >
+                10x
+              </p>
+              <p
+                class="hidden relative border-2 bg-orange-400 p-3 text-orange-100 font-bold rounded-lg"
+                id="activeBooster100xbutton"
+              >
+                <span
+                  class="absolute inline-flex items-center justify-center w-6 h-6 text-xs font-bold text-white bg-red-500 rounded-full -top-2 -end-2 dark:border-gray-900 border-transparent"
+                  id="activeBooster100xNum"
+                  >0</span
+                >
+                100x
+              </p>
+            </div>
+          </div>
+        </div>
+        <div class="w-auto">
+          <div
+            class="bg-orange-400 flex flex-col items-center h-96 mt-0 mx-4 rounded-md"
+            style="height: 95%"
+          >
+            <h2 class="font-bold text-orange-200 uppercase mt-2">
+              Credit:
+              <span class="bg-orange-800 rounded-md p-1" id="credit"></span>
+            </h2>
+            <div class="flex justify-between w-56 mt-4">
+              <button
+                disabled
+                class="rounded-md bg-orange-500 p-2 disabled:text-orange-700 text-orange-200 font-bold shadow-md disabled:cursor-not-allowed flex flex-col text-center"
+                id="AutoClickBtn"
+              >
+                Auto-Click
+                <span class="text-xs" id="autoclickprice">cost: 500</span>
+              </button>
+              <button
+                disabled
+                class="rounded-md bg-orange-500 p-2 disabled:text-orange-700 text-orange-200 font-bold shadow-md disabled:cursor-not-allowed"
+              >
+                Bonus
+              </button>
+            </div>
+            <div class="mt-8 flex flex-col gap-y-2">
+              <p class="font-bold text-orange-200 uppercase text-center">
+                Buy Boosters
+              </p>
+              <button
+                id="2x"
+                class="mt-3 border border-transparent rounded-lg bg-orange-600 text-orange-100 font-bold flex justify-between p-2 disabled:cursor-not-allowed disabled:bg-orange-300 cursor-pointer"
+              >
+                2X <span id="custspan2x">cost: 100</span>
+              </button>
+              <button
+                id="5x"
+                class="border border-transparent rounded-lg bg-orange-600 text-orange-100 font-bold flex justify-between p-2 w-48 disabled:cursor-not-allowed disabled:bg-orange-300 cursor-pointer"
+              >
+                5X <span id="custspan5x">cost: 100</span>
+              </button>
+              <button
+                id="10x"
+                class="border border-transparent rounded-lg bg-orange-600 text-orange-100 font-bold flex justify-between p-2 disabled:cursor-not-allowed disabled:bg-orange-300 cursor-pointer"
+              >
+                10X <span id="custspan10x">cost: 100</span>
+              </button>
+              <button
+                id="100x"
+                class="border border-transparent rounded-lg bg-orange-600 text-orange-100 font-bold flex justify-between p-2 disabled:cursor-not-allowed disabled:bg-orange-300 cursor-pointer"
+              >
+                100X <span id="custspan100x">cost: 100</span>
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </main>
+  </body>
+</html>
