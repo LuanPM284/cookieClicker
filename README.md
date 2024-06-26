@@ -45,3 +45,9 @@ Follow given instructions and steps.
 
 ## Known Issues
 - None known at this time. If you encounter any issues, please report them.
+
+## Contributors
+- Alisabah [GitHub](https://github.com/AliSepar)
+- Anthony [GitHub](https://github.com/anthosaxe)
+- Patrick [GitHub](https://github.com/LuanPM284)
+
