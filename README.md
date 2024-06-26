@@ -14,7 +14,7 @@ Follow given instructions and steps.
 ## Versions
 |Image|Description|
 |---|---------|
-|<img src="/src/media/version_0.0.png" width="800" height="auto" />|Lorem Ipsum Mamma Mia!|
+|<img src="/src/media/version_0.0.png" width="600" height="auto" />|Lorem Ipsum Mamma Mia!|
 
 
 
