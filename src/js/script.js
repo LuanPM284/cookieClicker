@@ -413,11 +413,7 @@ function loadGame() {
 
 // when the user want to close the tab save all user data
 window.addEventListener("beforeunload", function (e) {
-  // when the window close this function will be called
-  // var saveData = JSON.parse();
-  if (localStorage.getItem("saveData")) {
-    SaveProgress();
-  }
+  SaveProgress();
 });
 
 // this function will create a cookie and save data to it
@@ -494,7 +490,8 @@ function buybonus() {
   if (credit >= bonusprice) {
     credit -= bonusprice;
     bonusprice *= 2;
-    document.getElementById("bonuszone").innerHTML = "<br>Cost: " + formatUnit(bonusprice);
+    document.getElementById("bonuszone").innerHTML =
+      "<br>Cost: " + formatUnit(bonusprice);
     displayCookie();
     multiplierTaggle();
     endTime = Math.floor(Date.now() / 1000) + countdownDuration;
@@ -540,16 +537,16 @@ autoclic.addEventListener("click", buyAutoClicker);
 // function to add an unit
 function formatUnit(credit) {
   if (credit > 1000000000000000) {
-    return credit = (credit / 1000000000000000).toFixed(1) + "Q";
+    return (credit = (credit / 1000000000000000).toFixed(1) + "Q");
   } else if (credit > 1000000000000) {
-    return credit = (credit / 1000000000000).toFixed(1) + "T";
+    return (credit = (credit / 1000000000000).toFixed(1) + "T");
   } else if (credit > 1000000000) {
-    return credit = (credit / 1000000000).toFixed(1) + "B";
+    return (credit = (credit / 1000000000).toFixed(1) + "B");
   } else if (credit > 1000000) {
-    return credit = (credit / 1000000).toFixed(1) + "M";
+    return (credit = (credit / 1000000).toFixed(1) + "M");
   } else if (credit > 1000) {
-    return credit = (credit / 1000).toFixed(1) + "K";
+    return (credit = (credit / 1000).toFixed(1) + "K");
   } else {
-    return credit = credit;
+    return (credit = credit);
   }
 }
