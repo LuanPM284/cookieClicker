@@ -278,7 +278,33 @@ times5xpoint.disabled = true;
 times10xpoint.disabled = true;
 times100xpoint.disabled = true;
 
-coockieBtn.addEventListener("click", increaseCookies);
+coockieBtn.addEventListener("click", (e) => {
+  increaseCookies();
+  creatParticle(e.clientX, e.clientY);
+  console.log(e.clientX + "x, y " + e.clientY);
+});
+
+// animation clicked on cookie and show a small cookie
+const creatParticle = (x, y) => {
+  // const particle = document.createElement("img");
+  // particle.setAttribute("src", "src/media/cookie-click-icon.png");
+  const particle = document.createElement("span");
+  particle.innerText = `+ ${clickValue}`;
+  particle.setAttribute("class", "cookie-particle");
+  particle.style.left = `${x}px`;
+  particle.style.top = `${y}px`;
+  coockieBtn.appendChild(particle);
+
+  const cookieImg = document.createElement("img");
+  cookieImg.setAttribute("src", "src/media/cookie-click-icon.png");
+  cookieImg.setAttribute("class", "cookie-particle");
+  particle.appendChild(cookieImg);
+
+  setTimeout(() => {
+    coockieBtn.removeChild(particle);
+    coockieBtn.removeChild(cookieImg);
+  }, 3000);
+};
 
 times2xpoint.addEventListener("click", times2xpointfunction);
 times5xpoint.addEventListener("click", times5xpointfunction);
