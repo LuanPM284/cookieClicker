@@ -353,11 +353,11 @@ function getOccurrence(array, value) {
 
 //this function will play sound when called
 function clickSound() {
-  var sound = new Audio("sound/clickb7.mp3");
+  var sound = new Audio("public/sound/clickb7.mp3");
   sound.play();
 }
 function buyclickSound() {
-  var sound = new Audio("sound/buy3.mp3");
+  var sound = new Audio("public/sound/buy3.mp3");
   sound.play();
 }
 
