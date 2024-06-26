@@ -15,8 +15,8 @@ Follow given instructions and steps.
 |Image|Description|
 |---|---------|
 |<img src="/src/media/version_0.0.png" width="600" height="auto" />|Lorem Ipsum Mamma Mia!|
-
-
+|<img src="/src/media/version_1.0.png" width="600" height="auto" />|Lorem Ipsum Mamma Mia!|
+|<img src="/src/media/version_2.0.png" width="600" height="auto" />|Lorem Ipsum Mamma Mia!|
 
 ## Gameplay
 - Click the cookie button to earn points.
