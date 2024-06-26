@@ -14,7 +14,9 @@ Follow given instructions and steps.
 ## Versions
 |Image|Description|
 |---|---------|
-|![image](/src/media/9cc9786e-aaca-4a1c-a452-4d747da723bb-removebg-preview.png =100x20)|Lorem Ipsum Mamma Mia!|
+|![image](/src/media/9cc9786e-aaca-4a1c-a452-4d747da723bb-removebg-preview.png)|Lorem Ipsum Mamma Mia!|
+|<img src="/src/media/version_0.0.png" width="200" height="200" />|Lorem Ipsum Mamma Mia!|
+
 
 
 ## Gameplay
