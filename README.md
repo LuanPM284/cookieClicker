@@ -8,8 +8,8 @@ The end goal is to be able to work as a group, create and deploy a small project
 Follow given instructions and steps.
 
 ## Versions
-
-![image](/src/media/9cc9786e-aaca-4a1c-a452-4d747da723bb-removebg-preview.png)
+|Image|Description|
+|![image](/src/media/9cc9786e-aaca-4a1c-a452-4d747da723bb-removebg-preview.png)|Lorem Ipsum Mamma Mia!|
 
 
 ## Gameplay
