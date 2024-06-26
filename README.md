@@ -9,6 +9,7 @@ Follow given instructions and steps.
 
 ## Versions
 |Image|Description|
+|---|---------|
 |![image](/src/media/9cc9786e-aaca-4a1c-a452-4d747da723bb-removebg-preview.png)|Lorem Ipsum Mamma Mia!|
 
 
