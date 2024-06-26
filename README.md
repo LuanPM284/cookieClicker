@@ -14,9 +14,9 @@ Follow given instructions and steps.
 ## Versions
 |Image|Description|
 |---|---------|
-|<img src="/src/media/version_0.0.png" width="600" height="auto" />|Lorem Ipsum Mamma Mia!|
-|<img src="/src/media/version_1.0.png" width="600" height="auto" />|Lorem Ipsum Mamma Mia!|
-|<img src="/src/media/version_2.0.png" width="600" height="auto" />|Lorem Ipsum Mamma Mia!|
+|<img src="/src/media/version_0.0.png" width="600" height="auto" />|Version 0.0 : A first schema|
+|<img src="/src/media/version_1.0.png" width="600" height="auto" />|Version 1.0: A first HTML and CSS design, in order to have the correct id's for the JavaScript|
+|<img src="/src/media/version_2.0.png" width="600" height="auto" />|Version 2.0 : Current version, with already implemented buttons and working updates such as multipliers, auto-click and bonus.|
 
 ## Gameplay
 - Click the cookie button to earn points.
