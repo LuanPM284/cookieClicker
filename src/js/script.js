@@ -1,41 +1,3 @@
-// Step 1 - base structure
-
-// ===============================================================================
-// Step 2 -
-//      Done at Step 1
-// ===============================================================================
-// Step 3 -
-//      Done at Step 1
-// ===============================================================================
-// Step 4 -
-
-// ===============================================================================
-// Step 5 -
-
-// ===============================================================================
-// Step 6 -
-
-// ===============================================================================
-// Step 7 - Multiplier table
-
-// ===============================================================================
-// Step 8 -
-
-// ===============================================================================
-// Step 9 -
-
-// ===============================================================================
-// Step 10 -
-
-// ===============================================================================
-// Step 11 -
-
-// ===============================================================================
-// Step 12 -
-
-// ===============================================================================
-// This allows us to keep count of the times a certain multiplier was purchased
-
 let pointsTag = document.getElementById("points");
 let coockieBtn = document.getElementById("coockie");
 let creditTag = document.getElementById("credit");
@@ -115,11 +77,11 @@ function displayClickValue() {
 let autoclickpricetag = document.getElementById("autoclickprice");
 
 function displayautoClick() {
-  autoclickpricetag.innerText = `Cost: ${autoClickeCost}`;
+  autoclickpricetag.innerText = `Cost: ${formatUnit(autoClickeCost)}`;
 }
 
 function displayCost(btnspan, price) {
-  btnspan.innerText = `Cost: ${price}`;
+  btnspan.innerText = `Cost: ${formatUnit(price)}`;
 }
 
 // turn buttoms on off
@@ -532,7 +494,7 @@ function buybonus() {
   if (credit >= bonusprice) {
     credit -= bonusprice;
     bonusprice *= 2;
-    document.getElementById("bonuszone").innerHTML = "<br>Cost: " + bonusprice;
+    document.getElementById("bonuszone").innerHTML = "<br>Cost: " + formatUnit(bonusprice);
     displayCookie();
     multiplierTaggle();
     endTime = Math.floor(Date.now() / 1000) + countdownDuration;
@@ -570,8 +532,24 @@ function buyAutoClicker() {
     displayCookie();
     multiplierTaggle();
     autozone.innerHTML = auto_value + " click par 10s ";
-    autop.innerHTML = "Cost: " + autoPrice;
+    autop.innerHTML = "Cost: " + formatUnit(autoPrice);
   }
 }
 
 autoclic.addEventListener("click", buyAutoClicker);
+// function to add an unit
+function formatUnit(credit) {
+  if (credit > 1000000000000000) {
+    return credit = (credit / 1000000000000000).toFixed(1) + "Q";
+  } else if (credit > 1000000000000) {
+    return credit = (credit / 1000000000000).toFixed(1) + "T";
+  } else if (credit > 1000000000) {
+    return credit = (credit / 1000000000).toFixed(1) + "B";
+  } else if (credit > 1000000) {
+    return credit = (credit / 1000000).toFixed(1) + "M";
+  } else if (credit > 1000) {
+    return credit = (credit / 1000).toFixed(1) + "K";
+  } else {
+    return credit = credit;
+  }
+}
