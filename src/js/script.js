@@ -532,7 +532,7 @@ function buybonus() {
   if (credit >= bonusprice) {
     credit -= bonusprice;
     bonusprice *= 2;
-    document.getElementById("bonuszone").innerHTML = "Cost: " + bonusprice;
+    document.getElementById("bonuszone").innerHTML = "<br>Cost: " + bonusprice;
     displayCookie();
     multiplierTaggle();
     endTime = Math.floor(Date.now() / 1000) + countdownDuration;
@@ -570,7 +570,7 @@ function buyAutoClicker() {
     displayCookie();
     multiplierTaggle();
     autozone.innerHTML = auto_value + " click par 10s ";
-    autop.innerHTML = "Cost" + autoPrice;
+    autop.innerHTML = "Cost: " + autoPrice;
   }
 }
 
