@@ -3,7 +3,8 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Document</title>
+    <title>Cookie Clicker</title>
+    <link rel="icon" type="image/svg+xml" href="/src/media/cookie-solid.svg" />
     <link rel="stylesheet" href="src/css/style.css" />
   </head>
   <body class="bg-orange-50 flex items-center justify-center">
@@ -24,11 +25,17 @@
               id="points"
             ></span>
           </p>
-          <p class="text-xs"><b>Per second : </b>0</p>
-          <button class="mt-4" id="coockie">
+          <p class="text-xs font-bold">
+            Auto-click: <span id="autozone"></span>
+          </p>
+          <button class="mt-4 relative" id="coockie">
+            <span
+              class="absolute inline-flex items-center justify-center w-6 h-6 text-xs font-bold text-black rounded-full -top-3 -end-2"
+              >+10</span
+            >
             <img
               class="cursor-copy w-56 active:animate-ping"
-              src="https://static.vecteezy.com/system/resources/previews/010/974/162/original/chocolate-chip-cookies-file-free-png.png"
+              src="src/media/9cc9786e-aaca-4a1c-a452-4d747da723bb-removebg-preview (1).png"
               alt=" cookie image"
             />
           </button>
@@ -97,17 +104,28 @@
             <div class="flex justify-between w-56 mt-4">
               <button
                 disabled
-                class="rounded-md bg-orange-500 p-2 disabled:text-orange-700 text-orange-200 font-bold shadow-md disabled:cursor-not-allowed flex flex-col text-center"
+                class="relative rounded-md bg-orange-500 p-2 disabled:text-orange-700 text-orange-200 font-bold shadow-md disabled:cursor-not-allowed flex flex-col text-center"
                 id="AutoClickBtn"
               >
+                <span
+                  class="hidden absolute inline-flex items-center justify-center w-6 h-6 text-xs font-bold text-white bg-red-500 rounded-full -top-2 -end-2 dark:border-gray-900 border-transparent"
+                  id="autoclikecount"
+                  >10s</span
+                >
                 Auto-Click
                 <span class="text-xs" id="autoclickprice">cost: 500</span>
               </button>
               <button
-                disabled
-                class="rounded-md bg-orange-500 p-2 disabled:text-orange-700 text-orange-200 font-bold shadow-md disabled:cursor-not-allowed"
+                class="relative rounded-md bg-orange-500 p-2 disabled:text-orange-700 text-orange-200 font-bold shadow-md disabled:cursor-not-allowed"
+                id="bonus"
               >
+                <span
+                  class="hidden absolute inline-flex items-center justify-center w-6 h-6 text-xs font-bold text-white bg-red-500 rounded-full -top-2 -end-2 dark:border-gray-900 border-transparent"
+                  id="countdown"
+                  >0s</span
+                >
                 Bonus
+                <p id="bonuszone"></p>
               </button>
             </div>
             <div class="mt-8 flex flex-col gap-y-2">
