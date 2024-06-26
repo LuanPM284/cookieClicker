@@ -65,8 +65,8 @@ function increaseCookies() {
 
 // it will assign the values to the html
 function displayCookie() {
-  pointsTag.innerText = points;
-  creditTag.innerText = credit;
+  pointsTag.innerText = formatUnit(points);
+  creditTag.innerText = formatUnit(credit);
   //   console.log(score);
 }
 function displayClickValue() {
