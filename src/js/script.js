@@ -41,6 +41,7 @@ let coockieBtn = document.getElementById("coockie");
 let creditTag = document.getElementById("credit");
 let multiBox = document.getElementById("multi-list"); // div that show all the multipy buttons
 let clickValueTag = document.getElementById("clickValue");
+let resetbtn = document.getElementById("resetbtn");
 
 let bonus = document.getElementById("bonus");
 let bonusprice = 50;
@@ -401,67 +402,104 @@ function buyclickSound() {
 // down codes are saving data procedure
 
 // // load the saved data
-// window.onload = function () {
-//   // when page load this will be called
-//   loadGame();
-//   // calling th display function to update the tags data
-//   displayMultiplier();
-//   displayCookie();
-//   displayClickValue();
-//   displayautoClick();
-//   buttonActiver();
-// };
+window.onload = function () {
+  // when page load this will be called
+  loadGame();
+  // calling th display function to update the tags data
+  displayMultiplier();
+  displayCookie();
+  displayClickValue();
+  displayautoClick();
+  buttonActiver();
+};
 
 // // set the data form the cookie to the variables
-// function loadGame() {
-//   var saveData = JSON.parse(localStorage.getItem("saveData"));
-//   // checking if there are variables in the cookie
-//   if (typeof saveData.points !== "undefined") points = saveData.points;
-//   if (typeof saveData.credit !== "undefined") credit = saveData.credit;
-//   if (typeof saveData.clickValue !== "undefined")
-//     clickValue = saveData.clickValue;
-//   if (typeof saveData.multiplerList !== "undefined")
-//     multiplerList = saveData.multiplerList;
 
-//   if (typeof saveData.times2xpointPrice !== "undefined")
-//     times2xpointPrice = saveData.times2xpointPrice;
+function loadGame() {
+  var saveData = JSON.parse(localStorage.getItem("saveData"));
+  // checking if there are variables in the cookie
+  if (typeof saveData.points !== "undefined") points = saveData.points;
+  if (typeof saveData.credit !== "undefined") credit = saveData.credit;
+  if (typeof saveData.clickValue !== "undefined")
+    clickValue = saveData.clickValue;
+  if (typeof saveData.multiplerList !== "undefined")
+    multiplerList = saveData.multiplerList;
 
-//   if (typeof saveData.times5xpointPrice !== "undefined")
-//     times5xpointPrice = saveData.times5xpointPrice;
+  if (typeof saveData.times2xpointPrice !== "undefined")
+    times2xpointPrice = saveData.times2xpointPrice;
 
-//   if (typeof saveData.times10xpointPrice !== "undefined")
-//     times10xpointPrice = saveData.times10xpointPrice;
+  if (typeof saveData.times5xpointPrice !== "undefined")
+    times5xpointPrice = saveData.times5xpointPrice;
 
-//   if (typeof saveData.times100xpointPrice !== "undefined")
-//     times100xpointPrice = saveData.times100xpointPrice;
+  if (typeof saveData.times10xpointPrice !== "undefined")
+    times10xpointPrice = saveData.times10xpointPrice;
 
-//   if (typeof saveData.autoClickeCost !== "undefined")
-//     autoClickeCost = saveData.autoClickeCost;
-// }
+  if (typeof saveData.times100xpointPrice !== "undefined")
+    times100xpointPrice = saveData.times100xpointPrice;
 
-// // when the user want to close the tab save all user data
-// window.addEventListener("beforeunload", function (e) {
-//   // when the window close this function will be called
-//   SaveProgress();
-// });
+  if (typeof saveData.autoClickeCost !== "undefined")
+    autoClickeCost = saveData.autoClickeCost;
 
-// // this function will create a cookie and save data to it
-// function SaveProgress() {
-//   // this is a object with all the data from the page
-//   var saveGame = {
-//     points: points,
-//     credit: credit,
-//     clickValue: clickValue,
-//     multiplerList: multiplerList,
-//     times2xpointPrice: times2xpointPrice,
-//     times5xpointPrice: times5xpointPrice,
-//     times10xpointPrice: times10xpointPrice,
-//     times100xpointPrice: times100xpointPrice,
-//     autoClickeCost: autoClickeCost,
-//   };
-//   // this will create a cookie by the name of saveData and inside it will be the object in Jason format
-//   localStorage.setItem("saveData", JSON.stringify(saveGame));
-// }
+  if (typeof saveData.bonusprice !== "undefined")
+    bonusprice = saveData.bonusprice;
+
+  if (typeof saveData.autoPrice !== "undefined") autoPrice = saveData.autoPrice;
+
+  if (typeof saveData.auto_value !== "undefined")
+    auto_value = saveData.auto_value;
+}
+
+// when the user want to close the tab save all user data
+window.addEventListener("beforeunload", function (e) {
+  // when the window close this function will be called
+  // var saveData = JSON.parse();
+  if (localStorage.getItem("saveData")) {
+    SaveProgress();
+  }
+});
+
+// this function will create a cookie and save data to it
+function SaveProgress() {
+  // this is a object with all the data from the page
+  let saveGame = {
+    points: points,
+    credit: credit,
+    clickValue: clickValue,
+    multiplerList: multiplerList,
+    times2xpointPrice: times2xpointPrice,
+    times5xpointPrice: times5xpointPrice,
+    times10xpointPrice: times10xpointPrice,
+    times100xpointPrice: times100xpointPrice,
+    autoClickeCost: autoClickeCost,
+    bonusprice: bonusprice,
+    autoPrice: autoPrice,
+    auto_value: auto_value,
+  };
+  // this will create a cookie by the name of saveData and inside it will be the object in Jason format
+  localStorage.setItem("saveData", JSON.stringify(saveGame));
+}
+function resetGame() {
+  if (confirm("Are you sure want to reset your game?")) {
+    bonusprice = 50;
+    autoPrice = 100;
+    auto_value = 0;
+
+    points = 0;
+    credit = 0;
+    clickValue = 1;
+    multiplerList = [];
+    autoClickeCost = 100;
+
+    times2xpointPrice = 10;
+    times5xpointPrice = 20;
+    times10xpointPrice = 30;
+    times100xpointPrice = 40;
+
+    location.reload();
+  }
+}
+
+resetbtn.addEventListener("click", resetGame);
 
 // code for bunos
 
