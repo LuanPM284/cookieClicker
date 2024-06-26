@@ -576,6 +576,10 @@ video {
   }
 }
 
+
+
+
+
 @media (min-width: 1280px) {
   .container {
     max-width: 1280px;
@@ -1043,3 +1047,32 @@ video {
     color: rgb(147 197 253 / var(--tw-text-opacity));
   }
 }
+
+
+
+.cookie-particle{
+ width: 30px;
+ position: absolute;
+ display: inline-block;
+ top: -30px;
+ left: -30px;
+ pointer-events: none; 
+ font-size: 15px;
+ color: white;
+ font-weight: bold;
+ background-color:  rgb(212, 71, 15);
+ border-radius: 50%;
+ animation: cookie-up 3s linear forwards;
+ /* z-index: 100; */
+}
+
+@keyframes cookie-up {
+  from{
+opacity: 1;
+  }
+  to{
+opacity: 0;
+top: 0;
+  }
+}
+
